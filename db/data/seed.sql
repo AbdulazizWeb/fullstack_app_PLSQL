@@ -1,12 +1,25 @@
-INSERT INTO roles (name) VALUES ('ADMIN');
-INSERT INTO roles (name) VALUES ('USER');
+insert into roles ( name ) values ( 'ADMIN' );
+insert into roles ( name ) values ( 'USER' );
 
-INSERT INTO users (first_name, last_name, email, password_hash)
-VALUES ('Admin', 'Adminovich', 'admin@gmail.com', 'Admin_777');
+insert into users (
+   first_name,
+   last_name,
+   email,
+   password_hash
+) values ( 'Admin',
+           'Adminovich',
+           'admin@gmail.com',
+           'Admin_777' );
 
-INSERT INTO user_roles (user_id, role_id)
-SELECT u.id, r.id
-FROM users u, roles r
-WHERE u.email = 'admin@gmail.com' AND r.name = 'ADMIN';
+insert into user_roles (
+   user_id,
+   role_id
+)
+   select u.id,
+          r.id
+     from users u,
+          roles r
+    where u.email = 'admin@gmail.com'
+      and r.name = 'ADMIN';
 
-COMMIT;
+commit;

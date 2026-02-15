@@ -1,10 +1,13 @@
-CREATE TABLE sessions (
-  token       VARCHAR2(64) PRIMARY KEY,
-  user_id     NUMBER NOT NULL,
-  created_at  DATE DEFAULT SYSDATE,
-  expires_at  DATE NOT NULL,
-  CONSTRAINT fk_sessions_user
-    FOREIGN KEY (user_id) REFERENCES users(id)
+create table sessions (
+   token      varchar2(64) primary key,
+   user_id    number not null,
+   created_at date default sysdate,
+   expires_at date not null,
+   constraint fk_sessions_user foreign key ( user_id )
+      references users ( id )
 );
 
-CREATE INDEX idx_sessions_user ON sessions(user_id);
+create index idx_sessions_user on
+   sessions (
+      user_id
+   );
